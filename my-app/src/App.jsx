@@ -1,5 +1,13 @@
-import React from "react";
+import * as React from 'react'
+
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react'
 
 export default function App() {
-  return <h1> I'm learning React!</h1>
+  // 2. Wrap ChakraProvider at the root of your app
+  return (
+    <ChakraProvider>
+      <TheRestOfYourApplication />
+    </ChakraProvider>
+  )
 }
