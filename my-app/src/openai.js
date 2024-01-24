@@ -10,7 +10,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-async function recipeGenerator(ingredients) {
+export default async function recipeGenerator(ingredients) {
   const completion = await openai.chat.completions.create({
     messages: [{ role: "system", content: `Create a recipe using these ingredients: ${ingredients}` }],
     model: "gpt-3.5-turbo",
@@ -18,5 +18,3 @@ async function recipeGenerator(ingredients) {
 
   console.log(completion.choices[0]);
 }
-
-export default recipeGenerator;
