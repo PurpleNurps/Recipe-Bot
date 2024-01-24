@@ -19,4 +19,4 @@ async function recipeGenerator(ingredients) {
   console.log(completion.choices[0]);
 }
 
-export default recipeGenerator();
+export default recipeGenerator;
