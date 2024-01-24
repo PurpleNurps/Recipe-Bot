@@ -19,4 +19,4 @@ async function recipeGenerator(ingredients) {
   console.log(completion.choices[0]);
 }
 
-recipeGenerator('peas, carrots, potatoes, chicken');
+export default recipeGenerator();
