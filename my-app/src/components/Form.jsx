@@ -22,8 +22,12 @@ export default function Form() {
     setIngredients(event.target.value);
   };
 
-  const handleButtonClick = () => {
-    recipeGenerator(ingredients);
+  const handleButtonClick = async () => {
+    try {
+      await recipeGenerator(ingredients);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
