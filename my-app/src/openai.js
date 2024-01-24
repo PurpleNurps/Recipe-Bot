@@ -1,20 +1,22 @@
-// require('dotenv').config();
-// import OpenAI from "openai";
+import dotenv from "dotenv";
+import OpenAI from "openai";
 
-// const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+dotenv.config();
 
-// const openai = new OpenAI({
-//   apiKey,
-//   dangerouslyAllowBrowser: true,
-// });
+const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
-// async function recipeGenerator(ingredients) {
-//   const completion = await openai.chat.completions.create({
-//     messages: [{ role: "system", content: `Create a recipe using these ingredients: ${ingredients}` }],
-//     model: "gpt-3.5-turbo",
-//   });
+const openai = new OpenAI({
+  apiKey,
+  dangerouslyAllowBrowser: true,
+});
 
-//   console.log(completion.choices[0]);
-// }
+async function recipeGenerator(ingredients) {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "system", content: `Create a recipe using these ingredients: ${ingredients}` }],
+    model: "gpt-3.5-turbo",
+  });
 
-// export default await recipeGenerator();
+  console.log(completion.choices[0]);
+}
+
+recipeGenerator('peas, carrots, potatoes, chicken');
