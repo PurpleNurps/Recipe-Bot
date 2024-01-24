@@ -8,7 +8,7 @@ import {
   Center,
   Button,
 } from "@chakra-ui/react";
-// import recipeGenerator from "../openai.js";
+import recipeGenerator from "../openai.js";
 
 // Create a form component that takes in user input
 // and returns a list of recipes
