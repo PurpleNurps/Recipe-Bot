@@ -1,9 +1,6 @@
-import dotenv from "dotenv";
 import OpenAI from "openai";
 
-dotenv.config();
-
-const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
 const openai = new OpenAI({
   apiKey,
