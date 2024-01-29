@@ -31,6 +31,7 @@ export default function Form() {
     try {
       setIsLoaded(false);
       setRecipe(await recipeGenerator(ingredients));
+      setIngredients("");
     } catch (error) {
       console.error(error);
     }
