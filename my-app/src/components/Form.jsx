@@ -7,19 +7,21 @@ import {
   Flex,
   Center,
   Button,
+  SkeletonText,
 } from "@chakra-ui/react";
 import recipeGenerator from "../openai.js";
 
 // Create a form component that takes in user input
 // and returns a list of recipes
 //
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Form() {
   const [ingredients, setIngredients] = useState("");
   const [recipe, setRecipe] = useState(
     "Hey good looking, what you got cooking?"
   );
+  const [isLoaded, setIsLoaded] = useState(true);
 
   const handleInputChange = (event) => {
     setIngredients(event.target.value);
@@ -27,12 +29,16 @@ export default function Form() {
 
   const handleButtonClick = async () => {
     try {
+      setIsLoaded(false);
       setRecipe(await recipeGenerator(ingredients));
     } catch (error) {
       console.error(error);
     }
-    console.log(recipe);
   };
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, [recipe]);
 
   return (
     <Flex
@@ -47,7 +53,6 @@ export default function Form() {
         <Container m="10"p="20px" bg="blue.100" borderRadius={10}>
           <FormControl>
             <FormLabel>Recipe Bot</FormLabel>
-
             <Box
               bg="white"
               m="4"
@@ -57,8 +62,10 @@ export default function Form() {
               fontFamily="monospace"
               whiteSpace="pre-wrap"
             >
+            <SkeletonText isLoaded={isLoaded} noOfLines={4} spacing="4">
               {recipe}
-            </Box>
+            </SkeletonText>
+              </Box>
             <Input
               bg="gray.100"
               marginBottom="5"
