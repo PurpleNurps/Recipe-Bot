@@ -38,6 +38,12 @@ export default function Form() {
     }
   };
 
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent the form from being submitted in the traditional way
+    handleButtonClick();
+  };
+
   useEffect(() => {
     setIsLoaded(true);
   }, [recipe]);
@@ -54,7 +60,7 @@ export default function Form() {
     >
       <Center>
         <Container m="10" p="20px" bg="blue.100" borderRadius={10}>
-          <FormControl>
+          <FormControl as="form" onSubmit={handleSubmit}>
             <FormLabel>Recipe Bot</FormLabel>
             <Box
               bg="white"
@@ -85,7 +91,10 @@ export default function Form() {
               value={ingredients}
               onChange={handleInputChange}
             />
-            <Button onClick={handleButtonClick}>Generate Recipe</Button>
+            <Button
+              onClick={handleButtonClick}
+              type="submit"
+            >Generate Recipe</Button>
           </FormControl>
         </Container>
       </Center>
