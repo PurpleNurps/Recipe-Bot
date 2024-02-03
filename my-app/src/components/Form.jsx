@@ -10,6 +10,7 @@ import {
   SkeletonText,
 } from "@chakra-ui/react";
 import recipeGenerator from "../openai.js";
+import Typewriter from "typewriter-effect";
 
 // Create a form component that takes in user input
 // and returns a list of recipes
@@ -52,7 +53,7 @@ export default function Form() {
       bg="orange.200"
     >
       <Center>
-        <Container m="10"p="20px" bg="blue.100" borderRadius={10} flexGrow={1}>
+        <Container m="10" p="20px" bg="blue.100" borderRadius={10}>
           <FormControl>
             <FormLabel>Recipe Bot</FormLabel>
             <Box
@@ -64,10 +65,19 @@ export default function Form() {
               fontFamily="monospace"
               whiteSpace="pre-wrap"
             >
-            <SkeletonText isLoaded={isLoaded} noOfLines={4} spacing="4">
-              {recipe}
-            </SkeletonText>
-              </Box>
+              <SkeletonText isLoaded={isLoaded} noOfLines={4} spacing="4">
+                <Typewriter
+                  onInit={(typewriter) => {
+                    typewriter
+                      .typeString(recipe)
+                      .start();
+                  }}
+                  options={{
+                    delay: 10,
+                  }}
+                />
+              </SkeletonText>
+            </Box>
             <Input
               bg="gray.100"
               marginBottom="5"
