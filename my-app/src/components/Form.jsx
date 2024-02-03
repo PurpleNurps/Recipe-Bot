@@ -43,15 +43,16 @@ export default function Form() {
 
   return (
     <Flex
+      overflow={"hidden"}
       width={"100%"}
+      height={"100%"}
       minHeight={"100vh"}
-      maxHeight={"100%"}
       alignContent={"center"}
       justifyContent={"center"}
       bg="orange.200"
     >
       <Center>
-        <Container m="10"p="20px" bg="blue.100" borderRadius={10}>
+        <Container m="10"p="20px" bg="blue.100" borderRadius={10} flexGrow={1}>
           <FormControl>
             <FormLabel>Recipe Bot</FormLabel>
             <Box
