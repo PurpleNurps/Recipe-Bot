@@ -6,7 +6,7 @@
 
 <h2>🚀 Demo</h2>
 
-<img src="demo.gif" alt="demo gif">
+<img src="https://github.com/PurpleNurps/Recipe-Bot/blob/main/my-app/public/demo.gif" alt="demo gif">
 
 <h2>🛠️ Installation Steps:</h2>
 
